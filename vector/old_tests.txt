@@ -1,0 +1,60 @@
+def test_errors(self):
+		a = [1, 2, 3]
+		b = [1, 2]
+		c = [1, 2, '4']
+		d = [True, 3, [1, 2]]
+
+		with self.assertRaises(TypeError):
+			v.add(a, d)
+		with self.assertRaises(TypeError):
+			v.add(a, c)
+		with self.assertRaises(TypeError):
+			v.add("1, 2, 3", 2)
+		with self.assertRaises(TypeError):
+			v.add(a, '4')
+		with self.assertRaises(ValueError):
+			v.add(a, b)
+
+		with self.assertRaises(TypeError):
+			v.sub(a, d)
+		with self.assertRaises(TypeError):
+			v.sub(a, c)
+		with self.assertRaises(TypeError):
+			v.sub("1, 2, 3", 2)
+		with self.assertRaises(TypeError):
+			v.sub(a, '4')
+		with self.assertRaises(ValueError):
+			v.sub(a, b)
+
+		with self.assertRaises(TypeError):
+			v.mul(a, d)
+		with self.assertRaises(TypeError):
+			v.mul(a, c)
+		with self.assertRaises(TypeError):
+			v.mul("1, 2, 3", 2)
+		with self.assertRaises(TypeError):
+			v.mul(a, '4')
+		with self.assertRaises(ValueError):
+			v.mul(a, b)
+
+		with self.assertRaises(TypeError):
+			v.div(a, d)
+		with self.assertRaises(TypeError):
+			v.div(a, c)
+		with self.assertRaises(TypeError):
+			v.div("1, 2, 3", 2)
+		with self.assertRaises(TypeError):
+			v.div(a, '4')
+		with self.assertRaises(ValueError):
+			v.div(a, b)
+
+	def test_operations(self):
+		a = [1, 2, 3, 4]
+		for scal in range(-10, 10):
+			self.assertEqual(v.add(a, scal), [item + scal for item in a])
+		for scal in range(-10, 10):
+			self.assertEqual(v.sub(a, scal), [item - scal for item in a])
+		for scal in range(-10, 10):
+			self.assertEqual(v.mul(a, scal), [item * scal for item in a])
+		for scal in range(-10, 10):
+			self.assertEqual(v.div(a, scal), [item / scal for item in a])
