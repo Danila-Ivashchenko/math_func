@@ -22,7 +22,6 @@ def change_rows(a, row1, row2, do_copy = False):
 		buf = get_row(a, row2)
 		a[row2] = a[row1]
 		a[row1] = buf
-		return
 
 def add(a, b):
 	new_mat = []
@@ -79,5 +78,5 @@ def add_rows(a, row1, row2, scalar = 1):
 def sub_rows(a, row1, row2, scalar = 1):
 	e.is_matrix(a)
 	new_mat = deepcopy(a)
-	new_mat[row1 - 1] = v.sub(new_mat[row1 - 1], v.mul(get_row(new_mat, row2), scalar))
+	new_mat[row1] = v.sub(new_mat[row1], v.mul(get_row(new_mat, row2), scalar))
 	return new_mat
