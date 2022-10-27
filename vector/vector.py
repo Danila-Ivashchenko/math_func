@@ -120,9 +120,17 @@ def to_str(vec1):
 def ensure_vectors(v1, v2):
 	if type(v1) != list or type(v2) != list:
 		return False
-	if is_vector(v1) and is_vector(v2):
-		ensure_size(v1, v2)
-	return True
+	if is_vector(v1):
+		if is_vector(v2):
+			ensure_size(v1, v2)
+			return True
+		else:
+			mess = f"Vector must be list, not {type(v2)} with int or flaut elements"
+			raise TypeError(mess)
+	else:
+		mess = f"Vector must be list, not {type(v1)} with int or flaut elements"
+		raise TypeError(mess)
+
 
 def is_vector(v):
 	if type(v) != list:
