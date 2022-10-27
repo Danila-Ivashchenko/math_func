@@ -38,14 +38,23 @@ def mul(a, b):
 	new_mat = []
 	if ensure_matrix(a, b):
 			size_for_mul(a, b)
-			for i in range(len(a)):
-				buf = []
-				for c in range(len(b)):
-					cell_buf = 0
-					for j in range(len(a[c])):
-						cell_buf += a[i][j] * b[j][c]	
-					buf += [cell_buf]
-				new_mat += [buf]
+			if (is_matrix(b)):
+				for i in range(len(a)):
+					buf = []
+					for c in range(len(b)):
+						cell_buf = 0
+						for j in range(len(a[c])):
+							cell_buf += a[i][j] * b[j][c]
+						buf += [cell_buf]
+					new_mat += [buf]
+			else:
+				for i in range(len(a)):
+					for c in range(len(b)):
+						cell_buf = 0
+						for j in range(len(a[c])):
+							cell_buf += a[i][j] * b[j]
+					new_mat += [cell_buf]
+
 	else:
 		mat, scal = are_mat_num(a, b)
 		for row in mat:
@@ -84,14 +93,15 @@ def sub_rows(a, row1, row2, scalar = 1):
 def is_matrix(mat):
 	if type(mat) != list:
 		return False
-	elif type(mat) == list and ensure_type_cells(mat):
-		return True
+	elif type(mat) == list:
+		if ensure_type_cells(mat):
+			return True
 	else:
 		raise TypeError(f"Must be not list, not {type(mat)}")
 
 
 def ensure_matrix(mat1, mat2):
-	return is_matrix(mat1) and is_matrix(mat2)
+	return (is_matrix(mat1) and is_matrix(mat2)) or (is_matrix(mat1) and v.is_vector(mat2))
 
 
 def ensure_type_cells(mat):
@@ -101,6 +111,8 @@ def ensure_type_cells(mat):
 				if not (type(cell) in (int, float)):
 					mess = f"{cell} is not int or float"
 					raise TypeError(mess)
+		else:
+			return False
 	return True
 
 

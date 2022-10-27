@@ -126,9 +126,10 @@ def ensure_vectors(v1, v2):
 
 def is_vector(v):
 	if type(v) != list:
-		mess = f"{v} is not vector. Vector must be list, not {type(v)}"
-		raise TypeError(mess)
+		return False
 	for item in v:
+		if type(item) == list:
+			return False
 		if type(item) not in (int, float):
 			mess = f"Vector must contanin only int or float coordinates, {item} is {type(item)}"
 			raise TypeError(mess)
