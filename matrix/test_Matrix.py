@@ -51,8 +51,8 @@ class  tester(unittest.TestCase):
 	def test_mul_value_mat(self):
 		a = [[2, 3], [5, 3], [2, 3]]
 		scalar = [[7, 3, 5], [3, 6, 4]]
-		answer = [[23, 24], [44, 33], [23, 24]]
-		self.assertEqual(mat.mul(a, scalar), answer)
+		answer = [[39, 45], [44, 39]]
+		self.assertEqual(mat.mul(scalar, a), answer)
 
 	def test_div_value_scalar(self):
 		a = [[2, 3], [5, 3], [2, 3]]
