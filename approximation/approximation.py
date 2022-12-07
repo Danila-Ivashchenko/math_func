@@ -47,14 +47,14 @@ def polinom_approximation(coefs, x):
         for j in range(len(coefs)):
             A_line = [x[i]**j] + A_line
         A += [A_line]
-
-    return mul(A, b)
+    y = mul(A, b)
+    return  [[x[i], y[i][0]] for i in range(len(y))]
 
 
 coefs = [0.13, 0.07, 1.89]
 coefs_2 = [0.48, -4.8, 13.96, -7.64]
 x = [1, 3, 5]
 
-# print(lower_square_method(data_ay))
-# print(linear_approximation(data_xy))
+# print(lower_square_method(data))
+# print(linear_approximation(data_xy, [1, 2]))
 # print(polinom_approximation(coefs_2, x))

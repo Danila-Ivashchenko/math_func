@@ -21,5 +21,6 @@ class tester(unittest.TestCase):
         right_answer = [x, 2.12]
         self.assertEqual(inter.lagrange_polimom(Lag_xy, x), right_answer)
 
+
 if __name__ == '__main__':
     unittest.main()
