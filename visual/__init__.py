@@ -1,1 +1,3 @@
 from visual_interpolar import visual_lagrange, visual_piece_interpolar, visual_interpolar_for_point
+from visual_approximation import visual_linear_approximation
+from visual_tailor_rows import visual_tailor_arcsin, visual_tailor_arccos, visual_tailor_cos, visual_tailor_sin, visual_tailor_exp
